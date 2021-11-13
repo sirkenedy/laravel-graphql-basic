@@ -23,11 +23,13 @@ class CreateTasksTable extends Migration
             $table->string('report');
             $table->unsignedBigInteger('assigned_to')->nullable();
             $table->unsignedBigInteger('assisted_by')->nullable();
+            $table->string('sprint_id');
             $table->string('type_id'); //bug, enhancement, documentation
             $table->string('priority_id'); // high, medium, low
             $table->timestamps();
 
             
+            $table->foreign('sprint_id')->references('id')->on('sprints')->onUpdate('cascade')->onDelete('set null');
             $table->foreign('assigned_to')->references('id')->on('users')->onUpdate('cascade')->onDelete('set null');
             $table->foreign('assisted_by')->references('id')->on('users')->onUpdate('cascade')->onDelete('set null');
         });

@@ -21,4 +21,19 @@ class Task extends Model
         'type_id',
         'priority_id',
     ];
+
+    public function sprint()
+    {
+        return $this->belongsTo(Sprint::class);
+    }
+
+    public function assigned_to()
+    {
+        return $this->belongsTo(User::class, 'assigned_to', 'id');
+    }
+
+    public function assisted_by()
+    {
+        return $this->belongsTo(User::class, 'assisted_by', 'id');
+    }
 }

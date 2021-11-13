@@ -16,4 +16,14 @@ class Sprint extends Model
         'sprint_end_date',
         'sprint_comp_date',
     ];
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }

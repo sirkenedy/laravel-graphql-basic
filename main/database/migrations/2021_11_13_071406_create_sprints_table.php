@@ -20,7 +20,10 @@ class CreateSprintsTable extends Migration
             $table->dateTime('sprint_start_date');
             $table->dateTime('sprint_end_date');
             $table->dateTime('sprint_comp_date');
+            $table->string('project_id');
             $table->timestamps();
+
+            $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade')->onDelete('set null');
         });
     }
 
